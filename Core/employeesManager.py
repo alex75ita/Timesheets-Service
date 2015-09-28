@@ -1,7 +1,4 @@
-from employee import Employee
-
-__author__ = 'alex'
-
+from entities.employee import Employee
 
 class EmployeesManager:
 
@@ -12,7 +9,7 @@ class EmployeesManager:
         employee = Employee(firstName, lastName)
         return employee
 
-    def save(self,f,):
+    def save(self, employee):
         """
 
         :type employee: Employee

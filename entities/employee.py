@@ -1,6 +1,3 @@
-__author__ = 'alex'
-
-import sys
 
 class Employee:
 
