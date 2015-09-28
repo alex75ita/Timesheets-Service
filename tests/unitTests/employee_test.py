@@ -17,6 +17,3 @@ class EmployeeTest(unittest.TestCase):
         self.assertEqual(firstName, employee.firstName, "firstName is not as expected")
         self.assertEqual(lastName, employee.lastName)
 
-
-    def test_a(self):
-        pass
