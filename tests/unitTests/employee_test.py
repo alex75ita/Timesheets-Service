@@ -27,4 +27,4 @@ class EmployeeTest(unittest.TestCase):
         self.assertIn("firstName", doc)
         self.assertEqual(firstName, doc["firstName"])
         self.assertIn("lastName", doc)
-        self.assertEqual(firstName, doc["lastName"])
+        self.assertEqual(lastName, doc["lastName"])

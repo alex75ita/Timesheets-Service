@@ -1,14 +1,17 @@
-from entities.employee import Employee
+from pymongo.mongo_client import MongoClient
+# from entities.employee import Employee
+
+default_configuration = dict(server="127.0.0.1", port=27017, database="timesheets")
+
 
 class UserFacade:
 
-    def __init__(self):
-        self.connection = None
+    def __init__(self, configuration=None):
+        self.configuration = configuration or default_configuration
 
     def save(self, employee):
-        #employee = Employee("AAA", "BBB")
-        #client = MongoClient(self.dbServer, self.dbPort)
-        #db = client[self.dbName]
-        #document = employee.toJson()
-        #id = db.employees.insert_one(document).inserted_id
-        pass
+        client = MongoClient(self.configuration["server"], self.configuration["port"])
+        db = client[self.configuration["database"]]
+        document = employee.toJson()
+        id_ = db.employees.insert_one(document).inserted_id
+        print(u"new id: {0}".format(id_))
