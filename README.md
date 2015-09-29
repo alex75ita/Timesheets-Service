@@ -13,3 +13,9 @@ It use mongoDB as repository.
 It use RabbitMQ as message broker.
 
 I use PyCharme Community edition and I commit in the repository the necesary foldrs and files.
+
+
+#Todo
+
+o Define a structure for the mongoDB data
+o Chose how to map Python classes and mongoDB BSON documents.
