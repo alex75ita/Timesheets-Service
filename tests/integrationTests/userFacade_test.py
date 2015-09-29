@@ -4,22 +4,26 @@ from facades.userFacade import UserFacade
 from entities.employee import Employee
 from pymongo.mongo_client import MongoClient
 
+configuration = dict(server="localhost", port=27017, database="timesheets_test")
+
 
 class userFacadeTests(unittest.TestCase):
 
     def setUp(self):
-        self.userFacade = UserFacade()
-        self.dbServer = "mongodb://localhost"
-        self.dbPort = 27017
-        self.dbName = "timesheets_test"
+        self.userFacade = UserFacade(configuration)
 
-        client = MongoClient(self.dbServer, self.dbPort)
-        db = client[self.dbName]
+        # clean database
+        client = MongoClient(configuration["server"], configuration["port"])
+        db = client[configuration["database"]]
         db.employees.drop()
 
     def tearDown(self):
         # delete database
         pass
+
+    def test_connection(self):
+        client = MongoClient(configuration["server"], configuration["port"])
+        self.assertIsNotNone(client)
 
     def test_ctor_when_empty(self):
         facade = UserFacade()
@@ -29,40 +33,28 @@ class userFacadeTests(unittest.TestCase):
         self.assertIn("database", facade.configuration)
 
     def test_ctor_when_configuration_is_passed(self):
-        configuration = dict(server="localhost", port=27017, database="Timesheets_test")
-        facade = UserFacade(configuration=configuration)
+        conf = dict(server="localhost", port=27017, database="Timesheets_test")
+        facade = UserFacade(configuration=conf)
         self.assertIsNotNone(facade.configuration)
         self.assertIn("server", facade.configuration)
         self.assertIn("port", facade.configuration)
         self.assertIn("database", facade.configuration)
-        self.assertEqual(configuration["server"], facade.configuration["server"])
-        self.assertEqual(configuration["port"], facade.configuration["port"])
-        self.assertEqual(configuration["database"], facade.configuration["database"])
+        self.assertEqual(conf["server"], facade.configuration["server"])
+        self.assertEqual(conf["port"], facade.configuration["port"])
+        self.assertEqual(conf["database"], facade.configuration["database"])
 
     def test_save_should_create_record_in_database(self):
-        employee = Employee("AAA", "CCC")
+        firstName = "AAA"
+        employee = Employee(firstName, "CCC")
         self.userFacade.save(employee)
-        # id = employee.Id
-        # self.assertIsNotNone(id)
-        # print(id)
 
         # Assert
-        client = MongoClient(self.dbServer, self.dbPort)
-        db = client[self.dbName]
-        loaded_employee = db.employees.find_one({"firstName":"AAA"})
+        client = MongoClient(configuration["server"], configuration["port"])
+        db = client[configuration["database"]]
+        loaded_employee = db.employees.find_one({"firstName": firstName})
         self.assertIsNotNone(loaded_employee)
+        self.assertIn("firstName", loaded_employee)
+        self.assertEqual(firstName, loaded_employee["firstName"])
 
-    def test_save_create_a_record_in_database(self):
-        employee = Employee("AAA", "BBB")
-        client = MongoClient(self.dbServer, self.dbPort)
-        db = client[self.dbName]
-        db.employees.insert_one(employee.toJson())
 
-        # Assert
-        loaded_employee = db.employees.find_one({"firstName":"AAA"})
-        self.assertIsNotNone(loaded_employee)
-
-    def test_connection(self):
-        client = MongoClient(self.dbServer, self.dbPort)
-        self.assertIsNotNone(client)
 
