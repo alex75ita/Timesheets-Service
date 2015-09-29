@@ -10,7 +10,7 @@ class userFacadeTests(unittest.TestCase):
     def setUp(self):
         print("setUp")
         self.userFacade = UserFacade()
-        self.dbServer = "mongodb://213.136.84.88"
+        self.dbServer = "mongodb://localhost"
         self.dbPort = 27017
         self.dbName = "timesheets_test"
         #self.employeesCollectionName = "employees"
@@ -36,7 +36,6 @@ class userFacadeTests(unittest.TestCase):
         db = client[self.dbName]
         loaded_employee = db.employees.find_one({"firstName":"AAA"})
         self.assertIsNotNone(loaded_employee)
-
 
     def test_save_create_a_record_in_database(self):
         employee = Employee("AAA", "BBB")
