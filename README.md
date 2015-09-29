@@ -11,3 +11,5 @@ This project is an exercise for use Python 3.5 and mongoDB and develop a solutio
 It is a Python 3 service.
 It use mongoDB as repository.
 It use RabbitMQ as message broker.
+
+I use PyCharme Community edition and I commit in the repository the necesary foldrs and files.
