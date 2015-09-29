@@ -1,6 +1,6 @@
 from entities.employee import Employee
 
-class userFacade:
+class UserFacade:
 
     def __init__(self):
         self.connection = None

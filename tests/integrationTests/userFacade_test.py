@@ -1,13 +1,42 @@
+from pathlib import _Accessor
 import unittest
+from facades.userFacade import UserFacade
+from entities.employee import Employee
 from pymongo.mongo_client import MongoClient
 
-class userFacadeTsts(unittest.TestCase):
+
+class userFacadeTests(unittest.TestCase):
+
+    def setUp(self):
+        self.userFacade = UserFacade()
+        self.dbServer = "mongodb://213.136.84.88"
+        self.dbPort = 27017
+        self.dbName = "timesheets_test"
+
+    def tearDown(self):
+        # delete database
+        pass
+
+    def test_save_should_works(self):
+        employee = Employee("AAA", "CCC")
+        self.userFacade.save(employee)
+        #id = employee.Id
+        #self.assertIsNotNone(id)
+        #print(id)
+
+        pass
 
     def test_save_create_a_record_in_database(self):
-        self.fail("not implemented")
+        employee = Employee("AAA", "BBB")
+        client = MongoClient(self.dbServer, self.dbPort)
+        db = client[self.dbName]
+        db.employees.insert_one(employee.toJson())
+
+        # Assert
+        loaded_employee = db.employees.find_one({"firstName":"AAA"})
+        self.assertIsNotNone(loaded_employee)
 
     def test_connection(self):
-        dbServer = "mongodb://213.136.84.88"
-        port = 27017
-        client = MongoClient(dbServer, port)
+        client = MongoClient(self.dbServer, self.dbPort)
         self.assertIsNotNone(client)
+
