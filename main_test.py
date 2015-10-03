@@ -4,6 +4,7 @@ import tests.unitTests.entities.employee_test
 from tests.unitTests.core import employeesManager_test
 import tests.unitTests.entities.timesheet_test
 import tests.integrationTests.userFacade_test
+import tests.integrationTests.consumers.consumer_test
 
 if __name__ == '__main__':
     #unittest.main(warnings='ignore')
@@ -15,6 +16,7 @@ if __name__ == '__main__':
         tests.unitTests.core.employeesManager_test,
         # integration tests
         tests.integrationTests.userFacade_test,
+        tests.integrationTests.consumers.consumer_test,
 
         # add test module here
     ]
