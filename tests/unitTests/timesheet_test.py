@@ -1,6 +1,8 @@
 import unittest
+from datetime import date
 from entities.timesheet import Timesheet
 from entities.employee import Employee
+import entities.item
 
 
 class TimesheetTest(unittest.TestCase):
@@ -34,3 +36,19 @@ class TimesheetTest(unittest.TestCase):
         timesheet = Timesheet.create_from_data(data)
 
         self.assertIsNotNone(timesheet)
+
+    def test_addHoliday_should_create_the_item(self):
+
+        # add a "holiday" item to the Timesheet of an employee
+        year = 2015
+        month = 10
+        day = 3
+        when = date(year, month, day)
+        employee = Employee("a", "b")
+        timesheet = Timesheet(2015, 10, employee)
+
+
+        timesheet.addHoliday(when)
+
+        self.assertIsNotNone(timesheet.items)
+        self.assertEqual(len(timesheet.items), 1)

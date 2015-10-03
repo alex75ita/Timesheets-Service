@@ -1,0 +1,7 @@
+from datetime import date
+
+class Example:
+
+    def __init__(self, date):
+        self.date = date
+
