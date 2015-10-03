@@ -14,6 +14,7 @@ class TimesheetTest(unittest.TestCase):
         lastName = "Doe"
         employee = Employee(firstName, lastName)
         timesheet = Timesheet(2015, 9, employee)
+
         self.assertIsNotNone(timesheet)
         self.assertEqual(year, timesheet.year)
         self.assertEqual(month, timesheet.month)

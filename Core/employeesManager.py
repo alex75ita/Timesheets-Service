@@ -1,11 +1,13 @@
 from entities.employee import Employee
 
+
 class EmployeesManager:
 
     def __init__(self, userFacade):
         self.userFacade = userFacade
 
-    def create(self, firstName, lastName):
+    @staticmethod
+    def create(firstName, lastName):
         employee = Employee(firstName, lastName)
         return employee
 

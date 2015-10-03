@@ -1,15 +1,21 @@
 import unittest
-import tests.unitTests.employee_test
-import tests.unitTests.timesheet_test
+
+import tests.unitTests.entities.employee_test
+from tests.unitTests.core import employeesManager_test
+import tests.unitTests.entities.timesheet_test
 import tests.integrationTests.userFacade_test
 
 if __name__ == '__main__':
     #unittest.main(warnings='ignore')
 
     modules = [
-        tests.unitTests.employee_test,
-        tests.unitTests.timesheet_test,
+        # unit tests
+        tests.unitTests.entities.employee_test,
+        tests.unitTests.entities.timesheet_test,
+        tests.unitTests.core.employeesManager_test,
+        # integration tests
         tests.integrationTests.userFacade_test,
+
         # add test module here
     ]
 

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Timesheet.iml" filepath="$PROJECT_DIR$/.idea/Timesheet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Timesheets.iml" filepath="$PROJECT_DIR$/.idea/Timesheets.iml" />
     </modules>
   </component>
 </project>
