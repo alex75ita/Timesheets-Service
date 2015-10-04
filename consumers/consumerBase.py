@@ -1,7 +1,5 @@
 import pika
 
-_host = "http:"
-
 _server = "bunny.cloudamqp.com"
 _user = "fkfpctoh"
 _password = "6yORM9AvfFYIhcv7pvO09GaTJsFvEpoi"

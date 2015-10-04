@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import Mock, MagicMock
+from unittest.mock import MagicMock
 from core.employeesManager import EmployeesManager
 from entities.employee import Employee
 from facades.userFacade import UserFacade
