@@ -1,10 +1,11 @@
 import unittest
-
-import tests.unitTests.entities.employee_test
 from tests.unitTests.core import employeesManager_test
-import tests.unitTests.entities.timesheet_test
+from tests.unitTests.entities import item_test, timesheet_test, employee_test
+from tests.unitTests.consumers import addItemConsumer_test
+
 import tests.integrationTests.userFacade_test
-import tests.integrationTests.consumers.consumer_test
+from tests.integrationTests.consumers import consumer_test
+
 
 if __name__ == '__main__':
     #unittest.main(warnings='ignore')
@@ -13,7 +14,10 @@ if __name__ == '__main__':
         # unit tests
         tests.unitTests.entities.employee_test,
         tests.unitTests.entities.timesheet_test,
+        tests.unitTests.entities.item_test,
         tests.unitTests.core.employeesManager_test,
+        tests.unitTests.consumers.addItemConsumer_test,
+
         # integration tests
         tests.integrationTests.userFacade_test,
         tests.integrationTests.consumers.consumer_test,

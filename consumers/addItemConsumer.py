@@ -1,8 +1,7 @@
-from datetime import date
-import pika
-from consumers import consumerBase
+import json
+import sys
 from consumers.consumerBase import ConsumerBase
-from entities.item import Permit
+from entities.item import Item
 
 
 class AddItemConsumer(ConsumerBase):
@@ -34,17 +33,26 @@ class AddItemConsumer(ConsumerBase):
     def _messageReceivedCallback(self, channel, method, properties, body):
 
         try:
-            item = self._getItemFromMessage(body)
+            data = self._getItemFromMessage(body)
         except:
             raise Exception("Fail to get Item from message")
 
-        self.messageConsumedCallback(item)
+        self.messageConsumedCallback(data)
 
     @staticmethod
-    def _getItemFromMessage(body):
+    def _getDataFromMessage(body):
 
-        when = date(2015, 10, 4)
-        hours = 3
-        item = Permit(when, hours)
+        if body == "Quit":
+            raise Exception("Message body: \"Quit\".")
 
-        return item
+        try:
+            data = json.loads(body)
+        except:
+            raise Exception("Fail to parse JSON.", sys.exc_info()[1])
+
+        assert "employee" in data.keys()
+
+        employee = None  # Employee.create #todo
+        item_ = Item.createFromData(data)
+
+        return employee, item_

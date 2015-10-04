@@ -7,22 +7,28 @@ import tests
 
 class InsertItemConsumerTest(TestCase):
 
-    def test__getItemFromMessage(self):
+    def test__getDataFromMessage_should_return_Item(self):
         url = None
         firstName = tests._firstName
         lastName = tests._lastName
         date = tests._date
         kind = PERMIT
         hours = tests._hours
-        msg = '{{"employee": {{"firstName":"{firstName}", "lastName":"{lastName}"}}, "kind":"permit", "hours":"3"}}' \
-            .format(firstName=firstName, lastName=lastName)
+        msg = '{{"employee": {{"firstName":"{firstName}", "lastName":"{lastName}"}}, \
+            "date":"{date}", "kind":"{kind}", "hours":"{hours}"}}' \
+            .format(firstName=firstName, lastName=lastName,
+                    date=date.isoformat(), kind=kind, hours=hours)
+
+        # print("msg: {0}".format(msg))
 
         def messageConsumedCallback():
             pass
 
         consumer = AddItemConsumer(url, messageConsumedCallback)
-        item = consumer._getItemFromMessage(msg)
+        data = consumer._getDataFromMessage(msg)
 
+        self.assertIsNotNone(data)
+        item = data[1]
         self.assertIsNotNone(item)
         self.assertIsInstance(item, Permit)
         self.assertIsNotNone(item.date)

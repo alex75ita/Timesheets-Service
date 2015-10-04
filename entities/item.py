@@ -1,7 +1,9 @@
 from datetime import date
+import datetime
+import sys
 
-HOLIDAY = 1
-PERMIT = 2
+HOLIDAY = "holiday"
+PERMIT = "permit"
 
 
 class Item:
@@ -13,7 +15,34 @@ class Item:
         self.kind = kind
         if self.kind == PERMIT:
             assert hours is not None
-            self.hours = hours
+            self.hours = int(hours)
+
+    @staticmethod
+    def createFromData(data):
+
+        """Create the Permit or Holiday item from the passed data.
+        "data" is a dictionary obtained from JSON message.
+
+        :rtype : Item
+        """
+
+        assert "kind" in data.keys()
+        assert "date" in data.keys()
+
+        kind = data["kind"]
+        isPermit = kind == PERMIT
+        if isPermit:
+            assert "hours" in data.keys()
+
+        when = _parseDate(data["date"])
+
+        if isPermit:
+            hours = data["hours"]
+            _item = Permit(when, hours)
+        else:
+            _item = Holiday(when)
+
+        return _item
 
 
 class Permit(Item):
@@ -24,3 +53,9 @@ class Permit(Item):
 class Holiday(Item):
     def __init__(self, when):
         super().__init__(when, HOLIDAY)
+
+def _parseDate(stringDate):
+    try:
+        return datetime.datetime.strptime(stringDate, "%Y-%m-%d").date()
+    except:
+        raise Exception("Fail to parse date: `\"{0}\".".format(stringDate), sys.exc_info()[1])
