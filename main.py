@@ -17,7 +17,6 @@ def main():
         print("Some error occurs sending message.")
         raise
 
-
     return
 
     employee = employeesManager.create("John", "Doe")
