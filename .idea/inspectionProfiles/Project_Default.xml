@@ -5,15 +5,9 @@
     <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
       <option name="ignoredErrors">
         <list>
-<<<<<<< HEAD
           <option value="E501" />
-=======
-          <option value="W292" />
-          <option value="W391" />
->>>>>>> 466fd92faf94edbd713ca241b44260733d1e2119
         </list>
       </option>
     </inspection_tool>
-    <inspection_tool class="PyPep8NamingInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
   </profile>
 </component>
