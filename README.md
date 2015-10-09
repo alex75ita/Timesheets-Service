@@ -14,6 +14,9 @@ It use RabbitMQ as message broker.
 
 I use PyCharm Community edition and I commit in the repository the necessary folders and files.
 
+# Requirements
+pymongo
+
 
 # Todo
 

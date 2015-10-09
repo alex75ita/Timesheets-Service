@@ -55,3 +55,7 @@ docs/_build/
 
 # PyBuilder
 target/
+*.orig
+
+# PyCharme
+.dea/workspace.xml
