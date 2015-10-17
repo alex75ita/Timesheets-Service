@@ -58,5 +58,5 @@ target/
 
 *.orig
 
-# PyCharme
-.idea/workspace.xml
+# PyCharm
+.idea/*
