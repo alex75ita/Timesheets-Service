@@ -2,14 +2,14 @@ import unittest
 from unittest.mock import MagicMock
 from core.employeesManager import EmployeesManager
 from entities.employee import Employee
-from facades.userFacade import UserFacade
+from providers.userProvider import UserProvider
 
 
 class EmployeeManagerTest(unittest.TestCase):
 
     def test_ctor(self):
-        userFacade_ = UserFacade()
-        manager = EmployeesManager(userFacade_)
+        provider = UserProvider()
+        manager = EmployeesManager(provider)
 
         self.assertIsNotNone(manager)
         self.assertIsNotNone(manager.userFacade)
@@ -31,19 +31,19 @@ class EmployeeManagerTest(unittest.TestCase):
 
         #userFacadeMock = Mock(spec=UserFacade)
 
-        userFacade_ = UserFacade()
-        userFacade_.save = MagicMock()
-        manager = EmployeesManager(userFacade_)
+        provider = UserProvider()
+        provider.save = MagicMock()
+        manager = EmployeesManager(provider)
         manager.save(employee)
 
         # assert
-        userFacade_.save.asser_any_call()
-        userFacade_.save.assert_called_once_with(employee)
+        provider.save.asser_any_call()
+        provider.save.assert_called_once_with(employee)
 
 # private methods
     def _getManagerInstance(self):
-        userFacade = UserFacade()
-        manager = EmployeesManager(userFacade)
+        provider = UserProvider()
+        manager = EmployeesManager(provider)
         return manager
 
     def _getTestEmployee(self):

@@ -1,6 +1,6 @@
 from pathlib import _Accessor
 import unittest
-from facades.userFacade import UserFacade
+from providers.userProvider import UserProvider
 from entities.employee import Employee
 from pymongo.mongo_client import MongoClient
 
@@ -10,7 +10,7 @@ configuration = dict(server="localhost", port=27017, database="timesheets_test")
 class userFacadeTests(unittest.TestCase):
 
     def setUp(self):
-        self.userFacade = UserFacade(configuration)
+        self.userFacade = UserProvider(configuration)
 
         # clean database
         client = MongoClient(configuration["server"], configuration["port"])
@@ -26,22 +26,22 @@ class userFacadeTests(unittest.TestCase):
         self.assertIsNotNone(client)
 
     def test_ctor_when_empty(self):
-        facade = UserFacade()
-        self.assertIsNotNone(facade.configuration)
-        self.assertIn("server", facade.configuration)
-        self.assertIn("port", facade.configuration)
-        self.assertIn("database", facade.configuration)
+        provider = UserProvider()
+        self.assertIsNotNone(provider.configuration)
+        self.assertIn("server", provider.configuration)
+        self.assertIn("port", provider.configuration)
+        self.assertIn("database", provider.configuration)
 
     def test_ctor_when_configuration_is_passed(self):
         conf = dict(server="localhost", port=27017, database="Timesheets_test")
-        facade = UserFacade(configuration=conf)
-        self.assertIsNotNone(facade.configuration)
-        self.assertIn("server", facade.configuration)
-        self.assertIn("port", facade.configuration)
-        self.assertIn("database", facade.configuration)
-        self.assertEqual(conf["server"], facade.configuration["server"])
-        self.assertEqual(conf["port"], facade.configuration["port"])
-        self.assertEqual(conf["database"], facade.configuration["database"])
+        provider = UserProvider(configuration=conf)
+        self.assertIsNotNone(provider.configuration)
+        self.assertIn("server", provider.configuration)
+        self.assertIn("port", provider.configuration)
+        self.assertIn("database", provider.configuration)
+        self.assertEqual(conf["server"], provider.configuration["server"])
+        self.assertEqual(conf["port"], provider.configuration["port"])
+        self.assertEqual(conf["database"], provider.configuration["database"])
 
     def test_save_should_create_record_in_database(self):
         firstName = "AAA"

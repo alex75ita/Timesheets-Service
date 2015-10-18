@@ -4,7 +4,7 @@ from pymongo.mongo_client import MongoClient
 default_configuration = dict(server="127.0.0.1", port=27017, database="timesheets")
 
 
-class UserFacade:
+class UserProvider:
 
     def __init__(self, configuration=None):
         self.configuration = configuration or default_configuration
