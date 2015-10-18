@@ -8,7 +8,7 @@ import tests
 class InsertItemConsumerTest(TestCase):
 
     def test__getDataFromMessage_should_return_Item(self):
-        url = None
+        url = "test"
         firstName = tests._firstName
         lastName = tests._lastName
         date = tests._date

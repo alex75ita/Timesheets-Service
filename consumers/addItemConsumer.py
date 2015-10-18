@@ -11,6 +11,7 @@ class AddItemConsumer(ConsumerBase):
     """
 
     def __init__(self, url, messageConsumedCallback):
+        assert isinstance(url, str) is True
         assert messageConsumedCallback is not None
         super().__init__(url)
 
@@ -19,17 +20,20 @@ class AddItemConsumer(ConsumerBase):
     def startConsuming(self, queue):
         """ Start to consume messages from the passed queue
         and call messageConsumed when message is managed
+        :param queue: name of the queue
+        :type queue: string
         """
 
-        super().startConsuming()
+        assert isinstance(queue, str) is True
+
 
         connection = super().getConnection()
         channel = connection.channel()
         channel.basic_consume(self._messageReceivedCallback,
                               queue=queue,
                               no_ack=True)
-
-        channel.start_consuming()
+        #todo: stop consuming after a while
+        #channel.start_consuming()
 
     def _messageReceivedCallback(self, channel, method, properties, body):
 
