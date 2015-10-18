@@ -1,9 +1,9 @@
-from test.test_exceptions import TestBase
+#from ..consumers import ConsumerBase
+from unittest import TestCase
+from consumers.consumerBase import ConsumerBase
 
-from consumers import ConsumerBase
 
-
-class ConsumerBaseTest(TestBase):
+class ConsumerBaseTest(TestCase):
 
     def test_getConnection(self):
 

@@ -7,7 +7,7 @@ from pymongo.mongo_client import MongoClient
 configuration = dict(server="localhost", port=27017, database="timesheets_test")
 
 
-class userFacadeTests(unittest.TestCase):
+class UserFacadeTest(unittest.TestCase):
 
     def setUp(self):
         self.userFacade = UserProvider(configuration)
