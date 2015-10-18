@@ -15,7 +15,8 @@ It use RabbitMQ as message broker.
 I use PyCharm Community edition and I commit in the repository the necessary folders and files.
 
 # Requirements
-pymongo
+pymongo: driver for MongoDB database
+pika: framework to manage RabbitMQ
 
 
 # Todo
