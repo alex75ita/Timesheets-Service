@@ -1,8 +1,8 @@
 import unittest
 from datetime import date
+
 from entities.timesheet import Timesheet
 from entities.employee import Employee
-import entities.item
 
 
 class TimesheetTest(unittest.TestCase):

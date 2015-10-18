@@ -1,4 +1,3 @@
-from warnings import catch_warnings
 from core.employeesManager import EmployeesManager
 from core.sender import Sender
 

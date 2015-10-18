@@ -1,6 +1,6 @@
-import unittest
 from test.test_exceptions import TestBase
-from consumers.consumerBase import ConsumerBase
+
+from consumers import ConsumerBase
 
 
 class ConsumerBaseTest(TestBase):

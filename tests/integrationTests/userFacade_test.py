@@ -1,5 +1,5 @@
-from pathlib import _Accessor
 import unittest
+
 from providers.userProvider import UserProvider
 from entities.employee import Employee
 from pymongo.mongo_client import MongoClient

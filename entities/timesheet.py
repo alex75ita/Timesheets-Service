@@ -1,4 +1,5 @@
 from datetime import date
+
 from entities.item import Item, Holiday, Permit
 
 

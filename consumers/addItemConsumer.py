@@ -1,5 +1,6 @@
 import json
 import sys
+
 from consumers.consumerBase import ConsumerBase
 from entities.item import Item
 

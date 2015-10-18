@@ -1,7 +1,7 @@
 from unittest import TestCase
+
 from consumers.addItemConsumer import AddItemConsumer
-from entities.item import Permit, PERMIT, HOLIDAY
-import datetime
+from entities.item import Permit, PERMIT
 import tests
 
 

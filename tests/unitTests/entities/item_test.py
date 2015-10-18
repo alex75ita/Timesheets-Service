@@ -1,8 +1,9 @@
 from unittest import TestCase
-import tests
 import datetime
+
+import tests
 import entities.item
-from entities.item import Item, Permit, PERMIT, HOLIDAY
+from entities.item import Item, Permit, PERMIT
 
 
 class itemTest(TestCase):
