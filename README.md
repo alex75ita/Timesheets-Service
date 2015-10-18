@@ -1,4 +1,4 @@
-# Timesheet
+# Timesheets Service
 
 This project is an exercise for use Python 3.5 and mongoDB and develop a solution based on Hexagonal architecture and TDD (and maybe BDD).
 
@@ -9,8 +9,8 @@ This project is an exercise for use Python 3.5 and mongoDB and develop a solutio
 
 # Technologies
 It is a Python 3 service.
-It use mongoDB as repository.
-It use RabbitMQ as message broker.
+It uses mongoDB as data repository.
+It uses RabbitMQ as messages broker.
 
 I use PyCharm Community edition and I commit in the repository the necessary folders and files.
 
