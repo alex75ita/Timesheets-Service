@@ -15,3 +15,13 @@ class Configuration:
         self.rabbitPassword = rabbitPassword
 
 
+    def createRabbitUrl(self):
+
+        url = "ampq://{user}:{password}@{server}/{host}".format(
+            server = self.rabbitServer,
+            host=self.rabbitHost,
+            user=self.rabbitUser.replace("@", "%40"),
+            password=self.rabbitPassword.replace("@", "%40")
+        )
+
+        return url

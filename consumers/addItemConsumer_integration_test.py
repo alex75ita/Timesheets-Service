@@ -1,12 +1,21 @@
 from unittest import TestCase
 from consumers.addItemConsumer import AddItemConsumer
-from tests.integrationTests import consumers
+from entities.configuration import Configuration
 
 
 class AddItemConsumerTest(TestCase):
 
+
+    def setUp(self):
+
+        rabbitServer = ""
+        rabbitHost = ""
+        rabbitUser = "test"
+        rabbitPassword = "test"
+        self.configuration = Configuration(rabbitServer, rabbitHost, rabbitUser, rabbitPassword)
+
     def test_startConsuming(self):
-        url = consumers.getUrl()
+        url = self.configuration.rabbitServer
 
         def messageReceivedCallback():
             pass
@@ -20,4 +29,4 @@ class AddItemConsumerTest(TestCase):
         self.fail()
 
     def test_getDataFromMessage(self):
-        self.fail()
+        self.fail("not implemented")

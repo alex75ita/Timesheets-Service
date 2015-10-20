@@ -1,9 +1,5 @@
 import pika
 
-_server = "bunny.cloudamqp.com"
-_user = "fkfpctoh"
-_password = "6yORM9AvfFYIhcv7pvO09GaTJsFvEpoi"
-_url = "amqp://fkfpctoh:6yORM9AvfFYIhcv7pvO09GaTJsFvEpoi@bunny.cloudamqp.com/fkfpctoh"
 
 # ref: https://www.rabbitmq.com/tutorials/tutorial-one-python.html
 
@@ -27,11 +23,11 @@ _url = "amqp://fkfpctoh:6yORM9AvfFYIhcv7pvO09GaTJsFvEpoi@bunny.cloudamqp.com/fkf
 # print 'Requeued %i messages' % requeued_messages
 # connection.close()
 
-
 class ConsumerBase:
 
-    def __init__(self, url=None):
-        self.url = url or _url
+    def __init__(self, url):
+        assert url is not None
+        self.url = url
 
     def getConnection(self):
         params = pika.URLParameters(self.url)
@@ -41,3 +37,5 @@ class ConsumerBase:
 
     # def createUrl(self, server, user, password):
     #     url = "amqp://{user}".format(server)
+
+

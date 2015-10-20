@@ -2,10 +2,10 @@ import unittest
 import pika
 import threading
 import time
-from tests.integrationTests import consumers
+from consumers.consumerBase import ConsumerBase
 
 
-class Consumer_test(unittest.TestCase):
+class ConsumerBaseTest(unittest.TestCase):
 
     def test_startConsuming(self):
 
@@ -44,3 +44,16 @@ class Consumer_test(unittest.TestCase):
         channel.start_consuming()  # start consuming (loop)
         connection.close()
         print("end")
+
+    def test_startConsuming(self):
+
+        #server = "bunny.cloudamqp.com"
+        #user = "fkfpctoh"
+        #password = "6yORM9AvfFYIhcv7pvO09GaTJsFvEpoi"
+        url = "amqp://fkfpctoh:6yORM9AvfFYIhcv7pvO09GaTJsFvEpoi@bunny.cloudamqp.com/fkfpctoh"
+
+
+        consumer = ConsumerBase(url)
+        consumer.startConsuming()
+
+
