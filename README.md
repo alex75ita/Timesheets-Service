@@ -25,3 +25,8 @@ I use PyCharm Community edition and I commit in the repository the necessary fol
 + Chose how to map Python classes and mongoDB BSON documents.
 
 
+# Naming convention
+Fuck the lower_case_with_underscore naming style: use UpperCamelCase and lowerCamelCase.
+Name test file as "aaa_test.py" (not "test_aaa.py") and put it in the same folder of the "aaa.py" file.
+Name "ClassTest" the test file, not "TestClass".
+ 

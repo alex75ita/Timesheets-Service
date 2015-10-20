@@ -16,9 +16,8 @@ class AddItemConsumerTest(TestCase):
         consumer.startConsuming(queue)
 
 
-
-    def test__messageReceivedCallback(self):
+    def test_messageReceivedCallback(self):
         self.fail()
 
-    def test__getDataFromMessage(self):
+    def test_getDataFromMessage(self):
         self.fail()
