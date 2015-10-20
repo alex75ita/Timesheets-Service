@@ -5,9 +5,19 @@ from entities.item import Permit, PERMIT
 import tests
 
 
-class InsertItemConsumerTest(TestCase):
+class AddItemConsumerTest(TestCase):
 
-    def test__getDataFromMessage_should_return_Item(self):
+    def test_init(self):
+
+        url = "url"
+        def messageConsumerCallback():
+            pass
+
+        consumer = AddItemConsumer(url, messageConsumerCallback)
+
+        assert consumer is not None
+
+    def test_getDataFromMessage_should_return_Item(self):
         url = "test"
         firstName = tests._firstName
         lastName = tests._lastName
