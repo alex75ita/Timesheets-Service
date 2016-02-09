@@ -10,10 +10,12 @@ class AddItemConsumer(ConsumerBase):
 
     """
 
-    def __init__(self, url, messageConsumedCallback):
+    def __init__(self, url, queue, messageConsumedCallback):
         assert isinstance(url, str) is True
+        assert isinstance(queue, str) is True
         assert messageConsumedCallback is not None
-        super().__init__(url)
+
+        super().__init__(url, queue)
 
         self.messageConsumedCallback = messageConsumedCallback
 

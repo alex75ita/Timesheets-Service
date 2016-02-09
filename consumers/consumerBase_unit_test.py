@@ -7,6 +7,7 @@ class ConsumerBaseTest(TestCase):
 
     def test_init(self):
         url = "aaa"
+        queue = "queue"
         consumer = ConsumerBase(url)
 
         assert consumer is not None
