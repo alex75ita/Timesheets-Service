@@ -6,6 +6,11 @@ import time
 class ConsumerBase:
 
     def __init__(self, url, queue):
+        """
+
+        :param url: RabbitMQ url, including vhost
+        :param queue: queue name
+        """
         assert url is not None
         assert queue is not None
 
@@ -22,14 +27,12 @@ class ConsumerBase:
     # def createUrl(self, server, user, password):
     #     url = "amqp://{user}".format(server)
 
-
     def startConsuming(self):
 
         # ref: https://www.rabbitmq.com/tutorials/tutorial-one-python.html
 
         thread = Thread(target=self._consume(), args=())
         thread.Start()
-
 
     def stopConsuming(self):
 
@@ -55,7 +58,6 @@ class ConsumerBase:
 # print 'Requeued %i messages' % requeued_messages
 # connection.close()
 
-
     def _consume(self):
 
         connection = self.getConnection()
@@ -65,7 +67,7 @@ class ConsumerBase:
 
         while not self.isStopRequested:
 
-            for methodFrame, properties, body in channel.consume(queue, no_ack=noAck):
+            for methodFrame, properties, body in channel.consume(self.queue, no_ack=noAck):
 
                 # Display the message parts and ack the message
                 print("methodFrame: {0}, properties: {1}, body: {2}".format(methodFrame, properties, body))

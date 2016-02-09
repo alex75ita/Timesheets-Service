@@ -3,11 +3,7 @@ import pika
 import threading
 import time
 from consumers.consumerBase import ConsumerBase
-
-configuration = {
-    "url": "amqp://fkfpctoh:6yORM9AvfFYIhcv7pvO09GaTJsFvEpoi@bunny.cloudamqp.com/fkfpctoh"
-}
-
+from consumers import configuration
 
 class ConsumerBaseTest(unittest.TestCase):
 
@@ -31,7 +27,7 @@ class ConsumerBaseTest(unittest.TestCase):
                 print("channel is closed")
 
         url = configuration["url"]
-        queue = "Queue1"
+        queue = configuration["queue"]
         params = pika.URLParameters(url)
         params.socket_timeout = 5
         connection = pika.BlockingConnection(params)
@@ -55,8 +51,9 @@ class ConsumerBaseTest(unittest.TestCase):
         #user = "fkfpctoh"
         #password = "6yORM9AvfFYIhcv7pvO09GaTJsFvEpoi"
         url = configuration["url"]
+        queue = queue = configuration["queue"]
 
-        consumer = ConsumerBase(url)
+        consumer = ConsumerBase(url, queue)
         consumer.startConsuming()
         time.sleep(2);
         consumer.stopConsuming()

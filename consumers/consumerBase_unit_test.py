@@ -1,13 +1,13 @@
 #from ..consumers import ConsumerBase
 from unittest import TestCase
 from consumers.consumerBase import ConsumerBase
-
+from consumers import configuration
 
 class ConsumerBaseTest(TestCase):
 
     def test_init(self):
-        url = "aaa"
-        queue = "queue"
+        url = configuration["url"]
+        queue = configuration["queue"]
         consumer = ConsumerBase(url)
 
         assert consumer is not None
