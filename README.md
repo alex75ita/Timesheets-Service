@@ -28,6 +28,7 @@ RabbitMQ server for developing is a free one (registered to Alex75) on www.cloud
 
 
 # Todo
++ Create a configuration loader (suggestion: use json module to load file from data folder)
 + Define a structure for the mongoDB data
 + Chose how to map Python classes and mongoDB BSON documents.
 
